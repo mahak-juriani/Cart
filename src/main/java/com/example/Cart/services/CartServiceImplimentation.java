@@ -30,13 +30,13 @@ public class CartServiceImplimentation {
         return response;
     }
 
-    public ResponseEntity<FakeStoreCartDTO[]> addCart(Cart cart){
-        var response = restTemplate.postForEntity(url + "/carts/", cart, FakeStoreCartDTO[].class);
+    public FakeStoreCartDTO[] addCart(Cart cart){
+        var response = restTemplate.postForObject(url + "/carts/", cart, FakeStoreCartDTO[].class);
         return response;
     }
 
-    public ResponseEntity<FakeStoreCartDTO[]> updateCart(Long id){
-        var response = restTemplate.postForEntity(url, id, FakeStoreCartDTO[].class);
+    public FakeStoreCartDTO[] updateCart(Long id){
+        var response = restTemplate.postForObject(url, id, FakeStoreCartDTO[].class);
         return response;
     }
 

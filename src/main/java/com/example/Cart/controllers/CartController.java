@@ -25,13 +25,13 @@ public class CartController {
     }
 
     
-    @GetMapping("/carts/")
+    @GetMapping("/carts")
     public FakeStoreCartDTO[] getAllCarts(){
         return cs.getAllCarts();
     }
 
     @GetMapping("/carts/{id}")
-    public FakeStoreCartDTO getCartById(@PathVariable Long id){
+    public FakeStoreCartDTO getCartById(@PathVariable("id") Long id){
         return cs.getCartById(id);
     }
 
@@ -43,22 +43,22 @@ public class CartController {
     //
 
     @GetMapping("/carts/user-cart/{userId}")
-    public FakeStoreCartDTO[] getUserCart(@PathVariable Long userId) {
+    public FakeStoreCartDTO[] getUserCart(@PathVariable("id") Long userId) {
         return cs.getUserCart(userId);
     }
 
-    @PostMapping("/carts/")
-    public ResponseEntity<FakeStoreCartDTO[]> addCart(@RequestBody Cart cart){
+    @PostMapping("/carts")
+    public FakeStoreCartDTO[] addCart(@RequestBody Cart cart){
         return cs.addCart(cart);
     }
     
     @PostMapping("/carts/{id}")
-    public ResponseEntity<FakeStoreCartDTO[]> updateCart(@PathVariable Long id) {
+    public FakeStoreCartDTO[] updateCart(@PathVariable("id") Long id) {
         return cs.updateCart(id);
     }
 
     @GetMapping("/carts/delete/{id}")
-    public String deleteCart(@PathVariable Long id){
+    public String deleteCart(@PathVariable("id") Long id){
         cs.deleteCart(id);
         return "Cart deleted Successfully";
     }
